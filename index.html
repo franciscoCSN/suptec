@@ -422,7 +422,7 @@
 								method="post" action="http://segnatec.com.br/mailme">
 								<div class="row gtr-50">
 									<div class="col-6 col-12-small">
-										<input class="form-control form-control-sm" name="origin"
+										<input class="form-control form-control-sm" id="origin" name="origin"
 											type="hidden" value="main"> <input placeholder="Nome"
 											class="form-control form-control-sm" onClick="" type="text"
 											name="nome" id="nome">
@@ -434,11 +434,11 @@
 									</div>
 									<div class="col-12">
 										<input placeholder="Email"
-											class="form-control form-control-sm" onClick="" type="text"
+											class="form-control form-control-sm"  onClick="" type="text"
 											id="email" name="email" />
 									</div>
 									<div class="col-12">
-										<textarea placeholder="Menssagem"
+										<textarea placeholder="Menssagem"  id="message"
 											class="form-control form-control-sm" onClick=""
 											name="message" id="message" rows="6"></textarea>
 									</div>
@@ -446,9 +446,9 @@
 								</div>
 								<div class="actions" id="msgemail"></div>
 								<ul class="actions fields">
-									<li><input id="sendMessage" onclick="verifyFields()"
-										type="button" value="Enviar Email"
-										class="btn btn-sm btn-outline-white my-0 btn-primary" /><input style="margin:2px;"
+									<li><a id="smsg"><input id="sendMessage" 
+										type="button" value="Enviar Mensagem"
+										class="btn btn-sm btn-outline-white my-0 btn-primary" /></a><input style="margin:2px;"
 										class="btn btn-sm btn-outline-blue my-0 btn-info" type="reset"
 										value="Limpar" /></li>
 
@@ -460,6 +460,36 @@
 							<div style="border: 2px; color: blue;" id="sua_div"></div>
 						</section>
 					</div>
+					<script>
+    // Get a reference to the <a> tag using its id
+    var link = document.getElementById("smsg");
+    var nome = document.getElementById("nome");
+    var message = document.getElementById("message");
+
+    var compose = "https://wa.me/5586981572175?text=Oi, eu sou " + document.getElementById("nome").value +". " + document.getElementById("message").value;
+  	link.href = compose;
+	link.target = "_blank";
+    link.addEventListener("click", function(event) {
+      //event.preventDefault();
+      compose = "https://wa.me/5586981572175?text=Oi, eu sou " + document.getElementById("nome").value +". " + document.getElementById("message").value;
+      link.href = compose;
+    });
+    link.addEventListener("keypress", function(event) {
+      //event.preventDefault();
+      nome.value = document.getElementById("nome").value;
+      compose = "https://wa.me/5586981572175?text=Oi, eu sou " + document.getElementById("nome").value +". " + document.getElementById("message").value;
+      link.href = compose;
+
+    });
+    link.addEventListener("keypress", function(event) {
+      //event.preventDefault();
+		message.value = document.getElementById("message").value;
+		compose = "https://wa.me/5586981572175?text=Oi, eu sou " + document.getElementById("nome").value +". " + document.getElementById("message").value;
+		link.href = compose;
+    });
+    
+    
+  </script>
 					<div class="col-6 col-12-medium">
 						<section>
 							<p style="background-color:rgba(100,100,100,0.4);color:black;text-align:center;"><strong>Lembre-se: Não tentes ser bem-sucedido, tenta antes ser um homem de valor. "EINSTEIN"</strong></p>
